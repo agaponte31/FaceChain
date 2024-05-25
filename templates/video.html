@@ -1,0 +1,62 @@
+{% extends "camtemplate.html" %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %} Captura{% endblock %}
+
+{% block content %}
+<p>En vivo </p>
+
+<img src="{% url 'video_feed' %}" width="640" height="480" />
+<br>
+<br>
+<button id="login-btn">Login</button>
+<button id="register-btn">Registrar nuevo usuario</button>
+<script>
+    document.getElementById('login-btn').addEventListener('click', function() {
+        fetch('/captura_frame/', {
+            method: 'GET', // O POST si prefieres
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            /*if(data.status === 'success') {
+                alert('Frame captured successfully!');
+            } else {
+                alert('Failed to capture frame.');
+            }*/
+            window.location.href = '/login/';
+            
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+        
+    });
+
+    document.getElementById('register-btn').addEventListener('click', function() {
+        fetch('/captura_frame/', {
+            method: 'GET', // O POST si prefieres
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            /*if(data.status === 'success') {
+                alert('Frame captured successfully!');
+            } else {
+                alert('Failed to capture frame.');
+            }*/
+            window.location.href = '/register/';
+            
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+        
+    });
+    </script>
+
+{% endblock %}

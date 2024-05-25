@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Captura{% endblock %}
+
+{% block content %}
+<p> </p>
+
+{% if error == True %}                       <!-- Validacion errores de acceso a URL -->
+    <h2>Error {{ error_code }}</h2>
+    <p>{{ mensaje }}</p>
+{% else %}
+        {% if not update %}                  <!-- Validacion para mostrar Frame de rostro capturado en ventana de respuesta -->
+            <img id="lastFrame" src="../static/tmp/.tmp.jpg" alt="Último frame capturado aparecerá aquí" style="float: left;">
+
+            <div class="card mx-auto" style="width: 30rem; background-color: whitesmoke;">
+                <div class="card-body">
+                  <h5 class="card-title"></h5>
+                  <h2>{{ mensaje }}</h2>
+                  {% if status == True %}
+                      <h5>{{ nombre }}</h5>
+                      <h5>{{ apellido }}</h5>
+                      <h5>{{ cedula }}</h5>
+                      <h5>{{ cedula_ant }}</h5>
+                  {% endif %}
+                  <a href={% url 'home' %}>Regresar a Inicio</a>
+                </div>   
+            </div>
+        {% else %}
+            <div class="card mx-auto" style="width: 30rem; background-color: whitesmoke; float: left; padding: 4em;">
+                <div class="card-body">
+                <h5 class="card-title"></h5>
+                <h2>{{ mensaje }}</h2>
+                {% if status == True %}         <!-- Validacion para mostrar informacion del ususario en ventana de respuesta -->
+                    <h5>{{ nombre }}</h5>
+                    <h5>{{ apellido }}</h5>
+                    <h5>{{ cedula }}</h5>
+                    <h5>{{ cedula_ant }}</h5>
+                {% endif %}
+                <a href={% url 'home' %}>Regresar a Inicio</a>
+                </div>   
+            </div>
+        {% endif %}
+{% endif %}
+
+{% endblock %}

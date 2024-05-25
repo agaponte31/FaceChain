@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>
+            {% block title%} {% endblock %}
+        </title>
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        {% include "superior/navcam.html" %}
+        
+        {% block content %}
+
+        {% endblock %}
+
+        <p>@angiovanny 2024</p>
+        
+    </body>
+</html>

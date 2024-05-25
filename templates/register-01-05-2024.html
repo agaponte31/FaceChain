@@ -1,0 +1,21 @@
+{% extends "camtemplate.html" %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %} Captura{% endblock %}
+
+{% block content %}
+<p>En vivo </p>
+
+<img id="lastFrame" src="/static/.tmp.jpg" alt="Último frame capturado aparecerá aquí" style="display:block;">
+<br>
+<br>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Aceptar</button>
+    <button type="button" onclick="location.href='/'">Intentar de nuevo</button>
+</form>
+
+{% endblock %}

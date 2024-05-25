@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block title %} Captura{% endblock %}
+
+{% block content %}
+<p> </p>
+<div class="row">
+    <div class="col-md-3 ml-md-auto">
+        <div class="card" style="width: 15rem;">
+            <img src={{ img_profile }} class="card-img-top" alt="...">
+            <div class="card-body">
+                
+                <h5 class="card-title">@{{ user.username }}</h5>
+                <small><i class="bi bi-geo-alt"></i> {{ user.profile.location }}</small>
+                <p class="card-text mt-3">{{ user.profile.bio }}</p>
+
+                <strong>{{ profile }}</strong> <br>
+
+                {% for interest in user.profile.interests.all %}
+                    <span class="badge bg-secondary">{{ interest.name | upper }}</span>
+                {% endfor %}
+
+                <hr>
+                <a href={% url 'logout' %} class="btn btn-sm btn-success">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h4>FaceChain</h4>
+        <p>FaceChain es un sistema de reconocimiento facial que almacena la informacion biometrica y de identidad de los usuarios en entornos descentralizados como blockchain y redes de almacenamiento descentralizado IPFS.</p>
+    </div>
+</div>
+    
+{% endblock %}

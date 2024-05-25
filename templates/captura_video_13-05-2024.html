@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Captura{% endblock %}
+
+{% block content %}
+
+<div id="contenido" style="text-align:center;">
+    <br>
+    <br>
+    <video id="video" width="640" height="480" autoplay></video>
+    
+    <br>
+    <br>
+        
+        {% if nombre == 'validar' %}
+            <button id="loginbutton" type="button" class="btn btn-primary btn-md">validar</button>
+            <script src="{% static 'js/camv.js' %}"></script>
+        {% elif nombre == 'registrar' %}
+            <button id="registerbutton" type="button" class="btn btn-primary btn-md">Registrar</button>
+            <script src="{% static 'js/camr.js' %}"></script>
+        {% endif %}
+
+        <script src="{% static 'js/cam.js' %}"></script>
+        
+    
+</div>
+
+{% endblock %}

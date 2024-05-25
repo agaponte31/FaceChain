@@ -1,0 +1,12 @@
+{% extends "camtemplate.html" %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %} ERROR {% endblock %}
+
+{% block content %}
+<h1>Error {{ error_code }}</h1>
+    <p> {{ error_message }} </p>
+
+{% endblock %}

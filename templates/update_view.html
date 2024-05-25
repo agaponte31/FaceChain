@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Captura{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<p> </p>
+
+<form id="miFormulario" action={% url type %} method="post" style="float: left; padding: 4em;">
+    {% csrf_token %}
+
+    <div class="card mx-auto" style="width: 30rem; background-color: whitesmoke;">
+        <div class="card-body">
+          <h3 class="card-title">{{ mensaje }}</h3>
+            {{ form | crispy }}
+            <button type="submit" class="btn btn-primary btn-md">
+              <span id="spinner" class="spinner-border spinner-border-sm" style="display: none;" aria-hidden="true"></span>
+              {% if type == 'update_view' %}
+                <span id="textoBoton">Actualizar</span>
+              {% else %}
+                <span id="textoBoton">Enviar</span>
+              {% endif %}
+          </button>
+            
+       </div>
+    </div>
+</form>
+
+<script>
+
+  document.getElementById('miFormulario').addEventListener('submit', function() {
+      const boton = document.querySelector('button[type="submit"]');
+      const spinner = document.getElementById('spinner');
+      const textoBoton = document.getElementById('textoBoton');
+
+      spinner.style.display = 'inline-block';
+      textoBoton.textContent = 'Procesando...';
+      boton.disabled = true;
+});
+
+</script>
+    
+
+ 
+
+{% endblock %}
